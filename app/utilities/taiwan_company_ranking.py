@@ -215,7 +215,7 @@ class Crawler(CrawlerBase):
                 .values(cancel=1, update_time=self.tw_now_time())
             )
             session.execute(stmt_q)
-            session.commit()
+            # session.commit()
         except Exception as ex:
             raise ex
 
