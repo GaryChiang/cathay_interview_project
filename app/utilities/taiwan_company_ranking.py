@@ -198,6 +198,8 @@ class Crawler(CrawlerBase):
             if len(data) > 0:
                 session.bulk_save_objects(insert_collection)
                 session.commit()
+            else:
+                session.rollback()
 
         except Exception as e:
             raise
