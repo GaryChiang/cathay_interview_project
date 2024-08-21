@@ -6,7 +6,7 @@ from app.model.company import Information
 
 class CompanyInquiry:
     @staticmethod
-    def search(db: Session, company: str = '', unified_no: str = '') -> list:
+    def search(db: Session, company: str = '', unified_no: str = '') -> list[Information]:
         """
         查詢500強公司資訊
         :param unified_no: 統編

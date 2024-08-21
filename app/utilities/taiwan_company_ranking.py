@@ -64,7 +64,7 @@ class Crawler(CrawlerBase):
 
             return results
         except Exception as e:
-            raise
+            raise e
 
     def get_company_list(self) -> list[CompaniesList]:
         """
@@ -91,7 +91,7 @@ class Crawler(CrawlerBase):
 
             return result
         except Exception as e:
-            raise
+            raise e
 
     def extract_info(self, companies: list[CompaniesList]):
         """
@@ -144,7 +144,7 @@ class Crawler(CrawlerBase):
 
             self.q.put(result)
         except Exception as e:
-            raise
+            raise e
 
     @staticmethod
     def to_ad_year_format(val: str) -> str:
@@ -159,7 +159,7 @@ class Crawler(CrawlerBase):
             year = int(val[0]) + 1911
             return str(year) + '年' + val[1]
         except Exception as e:
-            raise
+            raise e
 
     def insert_to_database(self, data: list[CompaniesInfo]) -> None:
         """
@@ -190,8 +190,8 @@ class Crawler(CrawlerBase):
                         approve_date=item['approve_date'],
                         modified_date=item['modified_date'],
                         cancel=0,
-                        create_time=self.tw_now_time(),
-                        update_time=None
+                        create_time=self.tw_now_time()
+
                     )
                 )
 
@@ -202,7 +202,7 @@ class Crawler(CrawlerBase):
                 session.rollback()
 
         except Exception as e:
-            raise
+            raise e
 
     def update_check_time(self, session: sqlalchemy.orm.Session) -> None:
         """
@@ -232,7 +232,7 @@ class Crawler(CrawlerBase):
             # 寫進資料庫
             self.insert_to_database(data)
         except Exception as e:
-            raise
+            raise e
 
     @staticmethod
     def tw_now_time() -> datetime:
@@ -244,4 +244,4 @@ class Crawler(CrawlerBase):
             utc_now = datetime.utcnow()  # 獲取 UTC 現在時間
             return utc_now + timedelta(hours=8)  # 台灣時間
         except Exception as e:
-            raise
+            raise e

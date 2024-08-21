@@ -24,7 +24,7 @@ class Information(Base):
     modified_date = Column(String(32), nullable=True, comment="最後核准變更日期")
     cancel = Column(Integer, nullable=False, comment="是否生效", index=True)
     create_time = Column(DateTime, nullable=False, comment="建立時間")
-    update_time = Column(DateTime, nullable=True, comment="修改時間")
+    update_time = Column(DateTime, nullable=True, comment="修改時間", server_default=None)
 
 
 Base.metadata.create_all(engine)

@@ -3,10 +3,10 @@ env: flex
 
 entrypoint: gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
 
-resources:
-  cpu: 2
-  memory_gb: 4
-  disk_size_gb: 10
+#resources:
+#  cpu: 2
+#  memory_gb: 4
+#  disk_size_gb: 10
 
 #automatic_scaling:
 #  min_num_instances: 1
@@ -17,5 +17,5 @@ manual_scaling:
   instances: 1
 
 env_variables:
-  DB_CONN: "mysql+pymysql://使用者:密碼@伺服器位置:3306/資料庫?charset=utf8mb4"
+  DB_CONN: "mysql+pymysql://gary:gary1984@10.20.144.3:3306/company?charset=utf8mb4"
 
